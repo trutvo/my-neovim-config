@@ -41,6 +41,12 @@ Required for telescope:
 
 Required language server:
 
+* markdown:
+    `npm install -g @tailwindcss/language-server`
+
+* javascript/TypeScript:
+    `npm install -g typescript-language-server typescript vscode-langservers-extracted @tailwindcss/language-server`
+
 * pylint
     `pip3 install python-lsp-server pylint`
 
