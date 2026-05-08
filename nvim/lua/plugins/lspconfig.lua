@@ -8,6 +8,8 @@ return {
   config = function()
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+    -- Capabilities required for the visualstudio lsps (css, html, etc)
+    capabilities.textDocument.completion.completionItem.snippetSupport = true
 
     require('mason').setup({})
     local mason_lspconfig = require('mason-lspconfig')
@@ -125,6 +127,15 @@ return {
 
     vim.lsp.config('cmake', {})
     vim.lsp.enable("cmake")
+
+    -- javascript / typescript
+    
+    vim.lsp.config('ts_ls', {
+      capabilities = capabilities,
+      filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+      root_markers = { "package.json", "tsconfig.json", "jsconfig.json", ".git" },
+    })
+    vim.lsp.enable("ts_ls")
 
   end
 }
